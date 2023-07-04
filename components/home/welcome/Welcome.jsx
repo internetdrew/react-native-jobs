@@ -45,22 +45,23 @@ const Welcome = () => {
       </View>
 
       <View style={styles.tabsContainer}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <FlatList
-            data={jobTypes}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                style={styles.tab(activeJobType, item)}
-                onPress={() => {
-                  setActiveJobType(item);
-                  router.push(`/search/${item}`);
-                }}
-              >
-                <Text style={styles.tabText}>{item}</Text>
-              </TouchableOpacity>
-            )}
-          />
-        </SafeAreaView>
+        <FlatList
+          data={jobTypes}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.tab(activeJobType, item)}
+              onPress={() => {
+                setActiveJobType(item);
+                router.push(`/search/${item}`);
+              }}
+            >
+              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+            </TouchableOpacity>
+          )}
+          keyExtractor={item => item}
+          contentContainerStyle={{ columnGap: SIZES.small }}
+          horizontal
+        />
       </View>
     </View>
   );
