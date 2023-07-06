@@ -43,7 +43,7 @@ const JobDetails = () => {
         return (
           <Specifics
             title='Qualifications'
-            points={jobDetails?.job_highlights?.qualifications ?? ['N/A']}
+            points={jobDetails?.job_highlights?.Qualifications ?? ['N/A']}
           />
         );
       case 'About':
