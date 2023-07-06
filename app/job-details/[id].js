@@ -47,7 +47,16 @@ const JobDetails = () => {
           />
         );
       case 'About':
+        return (
+          <JobAbout info={jobDetails?.job_description ?? 'No data available'} />
+        );
       case 'Responsibilities':
+        return (
+          <Specifics
+            title='Responsibilities'
+            points={jobDetails?.job_highlights?.Responsibilities ?? ['N/A']}
+          />
+        );
       default:
         break;
     }
