@@ -20,10 +20,15 @@ const Popularjobs = () => {
     num_pages: 1,
   });
 
+  const [selectedJob, setSelectedJob] = useState(null);
+  const handleCardPress = () => {
+    setSelectedJob();
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popularjobs</Text>
+        <Text style={styles.headerTitle}>Popular jobs</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show All</Text>
         </TouchableOpacity>
@@ -31,16 +36,19 @@ const Popularjobs = () => {
 
       <View style={styles.cardsContainer}>
         {isLoading ? (
-          <ActivityIndicator size={'large'} colors={COLORS.primary} />
+          <ActivityIndicator size={'large'} color={COLORS.primary} />
         ) : error ? (
           <Text>Something went wrong.</Text>
         ) : (
           <FlatList
             data={data}
-            renderItem={({ item }) => {
-              console.log(item);
-              return <PopularJobCard item={item} />;
-            }}
+            renderItem={({ item }) => (
+              <PopularJobCard
+                item={item}
+                selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
+              />
+            )}
             keyExtractor={item => item.job_id}
             contentContainerStyle={{ columnGap: SIZES.small }}
             horizontal
