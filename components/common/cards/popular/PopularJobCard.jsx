@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { DEFAULT_COMPANY_LOGO_URL } from '@env';
 
 import styles from './popularjobcard.style';
 
@@ -15,9 +16,7 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
         <Image
           style={styles.logoImage}
           source={{
-            uri: empLogo
-              ? empLogo
-              : 'https://as2.ftcdn.net/v2/jpg/05/05/61/73/1000_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg',
+            uri: empLogo ? empLogo : DEFAULT_COMPANY_LOGO_URL,
           }}
           resizeMode='contain'
         />
